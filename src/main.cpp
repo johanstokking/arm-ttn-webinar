@@ -14,10 +14,10 @@ bool changePending = false;
 // Callback function when the measured distance has changed
 void distanceChanged(int distance)
 {
-    // Only if the difference is more than 20mm, trigger a pending change
+    // Only if the difference is more than 20 mm, trigger a pending change
     if (abs(distance - lastDistance) > 20)
     {
-        printf("Distance changed to %dmm\r\n", distance);
+        printf("Distance changed to %d cm\r\n", distance / 10);
         lastDistance = distance;
         changePending = true;
     }
@@ -81,12 +81,14 @@ int main()
 
             // Encode the distance
             payload.reset();
-            payload.addAnalogInput(1, lastDistance);
+            payload.addAnalogInput(1, (float)lastDistance / 10);
 
             // Send the data to the network
             std::vector<uint8_t> data(payload.getBuffer(), payload.getBuffer() + payload.getSize());
             if ((ret = dot->send(data)) != mDot::MDOT_OK) {
                 printf("Failed to send data: %ld\r\n", ret);
+            } else {
+                printf("Sent data\r\n");
             }
 
             // Wait 10 seconds after sending a message to reduce channel utilization
