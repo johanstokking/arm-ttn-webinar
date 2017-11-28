@@ -6,14 +6,12 @@
 #include "ttn_config.h"
 
 Serial pc(USBTX, USBRX);
-mDot *dot = NULL;
-lora::ChannelPlan *plan = NULL;
-CayenneLPP payload(50);
 
 // Store last measured distance and whether a change is pending
 int lastDistance = 0;
 bool changePending = false;
 
+// Callback function when the measured distance has changed
 void distanceChanged(int distance)
 {
     // Only if the difference is more than 20mm, trigger a pending change
@@ -33,8 +31,8 @@ int main()
     pc.baud(115200);
 
     // Initialize xDot with EU868 channel plan
-    plan = new lora::ChannelPlan_EU868();
-    dot = mDot::getInstance(plan);
+    lora::ChannelPlan *plan = new lora::ChannelPlan_EU868();
+    mDot *dot = mDot::getInstance(plan);
 
     // Configure the xDot: AppEUI, AppKey, enable public network and disable acknowledgements
     printf("Configuring xDot...\r\n");
@@ -68,9 +66,11 @@ int main()
     }
     printf("Joined The Things Network\r\n");
 
-    // Start measuring distance updates
-    mu.startUpdates();
+    // Allocate 50 bytes for sending payload
+    CayenneLPP payload(50);
 
+    // Start measuring and sending data
+    mu.startUpdates();
     while (true)
     {
         // See if there are changes pending
