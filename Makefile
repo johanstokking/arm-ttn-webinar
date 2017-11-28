@@ -46,6 +46,7 @@ PROJECT := arm-ttn-webinar
 ###############################################################################
 # Objects and Paths
 
+OBJECTS += ./HC_SR04_Ultrasonic_Library/ultrasonic.o
 OBJECTS += ./mbed-os/drivers/AnalogIn.o
 OBJECTS += ./mbed-os/drivers/BusIn.o
 OBJECTS += ./mbed-os/drivers/BusInOut.o
@@ -337,6 +338,13 @@ OBJECTS += ./src/main.o
 
 INCLUDE_PATHS += -I../
 INCLUDE_PATHS += -I../.
+INCLUDE_PATHS += -I.././HC_SR04_Ultrasonic_Library
+INCLUDE_PATHS += -I.././libxDot-mbed5
+INCLUDE_PATHS += -I.././libxDot-mbed5/MTS-Lora
+INCLUDE_PATHS += -I.././libxDot-mbed5/MTS-Lora/vendor
+INCLUDE_PATHS += -I.././libxDot-mbed5/MTS-Lora/vendor/multitech
+INCLUDE_PATHS += -I.././libxDot-mbed5/MTS-Lora/vendor/multitech/MTS-Utils
+INCLUDE_PATHS += -I.././libxDot-mbed5/plans
 INCLUDE_PATHS += -I.././mbed-os
 INCLUDE_PATHS += -I.././mbed-os/cmsis
 INCLUDE_PATHS += -I.././mbed-os/cmsis/TARGET_CORTEX_M
@@ -394,8 +402,8 @@ INCLUDE_PATHS += -I.././mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L1
 INCLUDE_PATHS += -I.././mbed-os/targets/TARGET_STM/TARGET_STM32L1/device
 INCLUDE_PATHS += -I.././src
 
-LIBRARY_PATHS :=
-LIBRARIES :=
+LIBRARY_PATHS := -L.././libxDot-mbed5 
+LIBRARIES := -lxDot-GCC_ARM 
 LINKER_SCRIPT ?= .././mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device/TOOLCHAIN_GCC_ARM/STM32L151XC.ld
 
 # Objects and Paths
@@ -421,6 +429,7 @@ C_FLAGS += -D__MBED_CMSIS_RTOS_CM
 C_FLAGS += -DTARGET_STM32L151CC
 C_FLAGS += -DTOOLCHAIN_object
 C_FLAGS += -D__CMSIS_RTOS
+C_FLAGS += -DMBED_BUILD_TIMESTAMP=1511877469.32
 C_FLAGS += -DTOOLCHAIN_GCC
 C_FLAGS += -DDEVICE_I2C_ASYNCH=1
 C_FLAGS += -DTARGET_LIKE_CORTEX_M3
@@ -451,7 +460,6 @@ C_FLAGS += -DDEVICE_SPISLAVE=1
 C_FLAGS += -DDEVICE_ANALOGIN=1
 C_FLAGS += -DDEVICE_PWMOUT=1
 C_FLAGS += -DDEVICE_FLASH=1
-C_FLAGS += -DMBED_BUILD_TIMESTAMP=1511875344.72
 C_FLAGS += -DTARGET_FF1705_L151CC
 C_FLAGS += -include
 C_FLAGS += mbed_config.h
@@ -469,6 +477,7 @@ CXX_FLAGS += -D__MBED_CMSIS_RTOS_CM
 CXX_FLAGS += -DTARGET_STM32L151CC
 CXX_FLAGS += -DTOOLCHAIN_object
 CXX_FLAGS += -D__CMSIS_RTOS
+CXX_FLAGS += -DMBED_BUILD_TIMESTAMP=1511877469.32
 CXX_FLAGS += -DTOOLCHAIN_GCC
 CXX_FLAGS += -DDEVICE_I2C_ASYNCH=1
 CXX_FLAGS += -DTARGET_LIKE_CORTEX_M3
@@ -499,7 +508,6 @@ CXX_FLAGS += -DDEVICE_SPISLAVE=1
 CXX_FLAGS += -DDEVICE_ANALOGIN=1
 CXX_FLAGS += -DDEVICE_PWMOUT=1
 CXX_FLAGS += -DDEVICE_FLASH=1
-CXX_FLAGS += -DMBED_BUILD_TIMESTAMP=1511875344.72
 CXX_FLAGS += -DTARGET_FF1705_L151CC
 CXX_FLAGS += -include
 CXX_FLAGS += mbed_config.h
@@ -567,11 +575,18 @@ ASM_FLAGS += -I./mbed-os/rtos/TARGET_CORTEX/rtx5/TARGET_M3/TOOLCHAIN_GCC
 ASM_FLAGS += -I./mbed-os/rtos/TARGET_CORTEX/rtx4
 ASM_FLAGS += -I./mbed-os/events
 ASM_FLAGS += -I./mbed-os/events/equeue
+ASM_FLAGS += -I./libxDot-mbed5
+ASM_FLAGS += -I./libxDot-mbed5/plans
+ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora
+ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora/vendor
+ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora/vendor/multitech
+ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora/vendor/multitech/MTS-Utils
+ASM_FLAGS += -I./HC_SR04_Ultrasonic_Library
 ASM_FLAGS += -I./src
 
 
 LD_FLAGS :=-Wl,--gc-sections -Wl,--wrap,main -Wl,--wrap,_malloc_r -Wl,--wrap,_free_r -Wl,--wrap,_realloc_r -Wl,--wrap,_memalign_r -Wl,--wrap,_calloc_r -Wl,--wrap,exit -Wl,--wrap,atexit -Wl,-n -mcpu=cortex-m3 -mthumb 
-LD_SYS_LIBS :=-Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys  -Wl,--end-group
+LD_SYS_LIBS :=-Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -lxDot-GCC_ARM -Wl,--end-group
 
 # Tools and Flags
 ###############################################################################
