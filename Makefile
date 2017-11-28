@@ -53,33 +53,34 @@ OBJECTS += ./mbed-os/drivers/BusInOut.o
 OBJECTS += ./mbed-os/drivers/BusOut.o
 OBJECTS += ./mbed-os/drivers/CAN.o
 OBJECTS += ./mbed-os/drivers/Ethernet.o
+OBJECTS += ./mbed-os/drivers/FileBase.o
+OBJECTS += ./mbed-os/drivers/FilePath.o
+OBJECTS += ./mbed-os/drivers/FileSystemLike.o
 OBJECTS += ./mbed-os/drivers/FlashIAP.o
 OBJECTS += ./mbed-os/drivers/I2C.o
 OBJECTS += ./mbed-os/drivers/I2CSlave.o
 OBJECTS += ./mbed-os/drivers/InterruptIn.o
 OBJECTS += ./mbed-os/drivers/InterruptManager.o
+OBJECTS += ./mbed-os/drivers/LocalFileSystem.o
 OBJECTS += ./mbed-os/drivers/RawSerial.o
 OBJECTS += ./mbed-os/drivers/SPI.o
 OBJECTS += ./mbed-os/drivers/SPISlave.o
 OBJECTS += ./mbed-os/drivers/Serial.o
 OBJECTS += ./mbed-os/drivers/SerialBase.o
+OBJECTS += ./mbed-os/drivers/Stream.o
 OBJECTS += ./mbed-os/drivers/Ticker.o
 OBJECTS += ./mbed-os/drivers/Timeout.o
 OBJECTS += ./mbed-os/drivers/Timer.o
 OBJECTS += ./mbed-os/drivers/TimerEvent.o
-OBJECTS += ./mbed-os/drivers/UARTSerial.o
 OBJECTS += ./mbed-os/events/EventQueue.o
 OBJECTS += ./mbed-os/events/equeue/equeue.o
 OBJECTS += ./mbed-os/events/equeue/equeue_mbed.o
 OBJECTS += ./mbed-os/events/equeue/equeue_posix.o
-OBJECTS += ./mbed-os/events/mbed_shared_queues.o
 OBJECTS += ./mbed-os/features/filesystem/Dir.o
 OBJECTS += ./mbed-os/features/filesystem/File.o
 OBJECTS += ./mbed-os/features/filesystem/FileSystem.o
 OBJECTS += ./mbed-os/features/filesystem/bd/ChainingBlockDevice.o
 OBJECTS += ./mbed-os/features/filesystem/bd/HeapBlockDevice.o
-OBJECTS += ./mbed-os/features/filesystem/bd/MBRBlockDevice.o
-OBJECTS += ./mbed-os/features/filesystem/bd/ProfilingBlockDevice.o
 OBJECTS += ./mbed-os/features/filesystem/bd/SlicingBlockDevice.o
 OBJECTS += ./mbed-os/features/filesystem/fat/ChaN/ccsbcs.o
 OBJECTS += ./mbed-os/features/filesystem/fat/ChaN/ff.o
@@ -170,9 +171,6 @@ OBJECTS += ./mbed-os/features/mbedtls/src/x509write_crt.o
 OBJECTS += ./mbed-os/features/mbedtls/src/x509write_csr.o
 OBJECTS += ./mbed-os/features/mbedtls/src/xtea.o
 OBJECTS += ./mbed-os/features/mbedtls/targets/TARGET_STM/aes_alt.o
-OBJECTS += ./mbed-os/features/mbedtls/targets/TARGET_STM/md5_alt.o
-OBJECTS += ./mbed-os/features/mbedtls/targets/TARGET_STM/sha1_alt.o
-OBJECTS += ./mbed-os/features/mbedtls/targets/TARGET_STM/sha256_alt.o
 OBJECTS += ./mbed-os/features/netsocket/NetworkInterface.o
 OBJECTS += ./mbed-os/features/netsocket/NetworkStack.o
 OBJECTS += ./mbed-os/features/netsocket/Socket.o
@@ -181,25 +179,13 @@ OBJECTS += ./mbed-os/features/netsocket/TCPServer.o
 OBJECTS += ./mbed-os/features/netsocket/TCPSocket.o
 OBJECTS += ./mbed-os/features/netsocket/UDPSocket.o
 OBJECTS += ./mbed-os/features/netsocket/WiFiAccessPoint.o
-OBJECTS += ./mbed-os/features/netsocket/cellular/generic_modem_driver/OnboardCellularInterface.o
-OBJECTS += ./mbed-os/features/netsocket/cellular/generic_modem_driver/PPPCellularInterface.o
-OBJECTS += ./mbed-os/features/netsocket/cellular/generic_modem_driver/UARTCellularInterface.o
 OBJECTS += ./mbed-os/features/netsocket/nsapi_dns.o
-OBJECTS += ./mbed-os/hal/mbed_flash_api.o
 OBJECTS += ./mbed-os/hal/mbed_gpio.o
 OBJECTS += ./mbed-os/hal/mbed_lp_ticker_api.o
 OBJECTS += ./mbed-os/hal/mbed_pinmap_common.o
-OBJECTS += ./mbed-os/hal/mbed_sleep_manager.o
 OBJECTS += ./mbed-os/hal/mbed_ticker_api.o
 OBJECTS += ./mbed-os/hal/mbed_us_ticker_api.o
-OBJECTS += ./mbed-os/platform/ATCmdParser.o
 OBJECTS += ./mbed-os/platform/CallChain.o
-OBJECTS += ./mbed-os/platform/FileBase.o
-OBJECTS += ./mbed-os/platform/FileHandle.o
-OBJECTS += ./mbed-os/platform/FilePath.o
-OBJECTS += ./mbed-os/platform/FileSystemHandle.o
-OBJECTS += ./mbed-os/platform/LocalFileSystem.o
-OBJECTS += ./mbed-os/platform/Stream.o
 OBJECTS += ./mbed-os/platform/mbed_alloc_wrappers.o
 OBJECTS += ./mbed-os/platform/mbed_application.o
 OBJECTS += ./mbed-os/platform/mbed_assert.o
@@ -208,47 +194,43 @@ OBJECTS += ./mbed-os/platform/mbed_critical.o
 OBJECTS += ./mbed-os/platform/mbed_error.o
 OBJECTS += ./mbed-os/platform/mbed_interface.o
 OBJECTS += ./mbed-os/platform/mbed_mem_trace.o
-OBJECTS += ./mbed-os/platform/mbed_mktime.o
-OBJECTS += ./mbed-os/platform/mbed_poll.o
 OBJECTS += ./mbed-os/platform/mbed_retarget.o
 OBJECTS += ./mbed-os/platform/mbed_rtc_time.o
-OBJECTS += ./mbed-os/platform/mbed_sdk_boot.o
 OBJECTS += ./mbed-os/platform/mbed_semihost_api.o
 OBJECTS += ./mbed-os/platform/mbed_stats.o
 OBJECTS += ./mbed-os/platform/mbed_wait_api_no_rtos.o
 OBJECTS += ./mbed-os/platform/mbed_wait_api_rtos.o
-OBJECTS += ./mbed-os/rtos/EventFlags.o
 OBJECTS += ./mbed-os/rtos/Mutex.o
 OBJECTS += ./mbed-os/rtos/RtosTimer.o
 OBJECTS += ./mbed-os/rtos/Semaphore.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/mbed_boot.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/mbed_rtx_handlers.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/mbed_rtx_idle.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx4/cmsis_os1.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/RTX_Config.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/TARGET_M3/TOOLCHAIN_GCC/irq_cm3.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rt_OsEventObserver.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_delay.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_evflags.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_evr.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_kernel.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_lib.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_memory.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_mempool.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_msgqueue.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_mutex.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_semaphore.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_system.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_thread.o
-OBJECTS += ./mbed-os/rtos/TARGET_CORTEX/rtx5/rtx_timer.o
 OBJECTS += ./mbed-os/rtos/Thread.o
+OBJECTS += ./mbed-os/rtos/rtos_idle.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/HAL_CM.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/RTX_Conf_CM.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_M3/TOOLCHAIN_GCC/HAL_CM3.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_M3/TOOLCHAIN_GCC/SVC_Table.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_CMSIS.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Event.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_List.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Mailbox.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_MemBox.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Memory.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Mutex.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_OsEventObserver.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Robin.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Semaphore.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_System.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Task.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Time.o
+OBJECTS += ./mbed-os/rtos/rtx/TARGET_CORTEX_M/rt_Timer.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/PeripheralPins.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device/TOOLCHAIN_GCC_ARM/startup_stm32l151xc.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device/system_clock.o
+OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device/cmsis_nvic.o
+OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device/system_stm32l1xx.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/xdot_eeprom.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/xdot_low_power.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/analogin_api.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/analogout_device.o
+OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/analogout_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/stm32l1xx_hal.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/stm32l1xx_hal_adc.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/stm32l1xx_hal_adc_ex.o
@@ -308,13 +290,11 @@ OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/stm32l1xx_ll_spi.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/stm32l1xx_ll_tim.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/stm32l1xx_ll_usart.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/stm32l1xx_ll_utils.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device/system_stm32l1xx.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/flash_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/gpio_irq_device.o
+OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/mbed_overrides.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/pwmout_device.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/serial_device.o
+OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/serial_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/TARGET_STM32L1/spi_api.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/analogout_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/can_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/gpio_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/gpio_irq_api.o
@@ -322,12 +302,10 @@ OBJECTS += ./mbed-os/targets/TARGET_STM/hal_tick_16b.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/hal_tick_32b.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/i2c_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/lp_ticker.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/mbed_overrides.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/pinmap.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/port_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/pwmout_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/rtc_api.o
-OBJECTS += ./mbed-os/targets/TARGET_STM/serial_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/sleep.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/stm_spi_api.o
 OBJECTS += ./mbed-os/targets/TARGET_STM/trng_api.o
@@ -347,8 +325,6 @@ INCLUDE_PATHS += -I.././libxDot-mbed5/MTS-Lora/vendor/multitech/MTS-Utils
 INCLUDE_PATHS += -I.././libxDot-mbed5/plans
 INCLUDE_PATHS += -I.././mbed-os
 INCLUDE_PATHS += -I.././mbed-os/cmsis
-INCLUDE_PATHS += -I.././mbed-os/cmsis/TARGET_CORTEX_M
-INCLUDE_PATHS += -I.././mbed-os/cmsis/TARGET_CORTEX_M/TOOLCHAIN_GCC
 INCLUDE_PATHS += -I.././mbed-os/cmsis/TOOLCHAIN_GCC
 INCLUDE_PATHS += -I.././mbed-os/drivers
 INCLUDE_PATHS += -I.././mbed-os/events
@@ -380,19 +356,15 @@ INCLUDE_PATHS += -I.././mbed-os/features/mbedtls/targets
 INCLUDE_PATHS += -I.././mbed-os/features/mbedtls/targets/TARGET_STM
 INCLUDE_PATHS += -I.././mbed-os/features/nanostack
 INCLUDE_PATHS += -I.././mbed-os/features/netsocket
-INCLUDE_PATHS += -I.././mbed-os/features/netsocket/cellular
-INCLUDE_PATHS += -I.././mbed-os/features/netsocket/cellular/generic_modem_driver
-INCLUDE_PATHS += -I.././mbed-os/features/netsocket/cellular/utils
 INCLUDE_PATHS += -I.././mbed-os/features/storage
 INCLUDE_PATHS += -I.././mbed-os/hal
 INCLUDE_PATHS += -I.././mbed-os/hal/storage_abstraction
 INCLUDE_PATHS += -I.././mbed-os/platform
 INCLUDE_PATHS += -I.././mbed-os/rtos
-INCLUDE_PATHS += -I.././mbed-os/rtos/TARGET_CORTEX
-INCLUDE_PATHS += -I.././mbed-os/rtos/TARGET_CORTEX/rtx4
-INCLUDE_PATHS += -I.././mbed-os/rtos/TARGET_CORTEX/rtx5
-INCLUDE_PATHS += -I.././mbed-os/rtos/TARGET_CORTEX/rtx5/TARGET_M3
-INCLUDE_PATHS += -I.././mbed-os/rtos/TARGET_CORTEX/rtx5/TARGET_M3/TOOLCHAIN_GCC
+INCLUDE_PATHS += -I.././mbed-os/rtos/rtx
+INCLUDE_PATHS += -I.././mbed-os/rtos/rtx/TARGET_CORTEX_M
+INCLUDE_PATHS += -I.././mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_M3
+INCLUDE_PATHS += -I.././mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_M3/TOOLCHAIN_GCC
 INCLUDE_PATHS += -I.././mbed-os/targets
 INCLUDE_PATHS += -I.././mbed-os/targets/TARGET_STM
 INCLUDE_PATHS += -I.././mbed-os/targets/TARGET_STM/TARGET_STM32L1
@@ -403,54 +375,48 @@ INCLUDE_PATHS += -I.././mbed-os/targets/TARGET_STM/TARGET_STM32L1/device
 INCLUDE_PATHS += -I.././src
 
 LIBRARY_PATHS := -L.././libxDot-mbed5 
-LIBRARIES := -lxDot-GCC_ARM 
+LIBRARIES := -l:libxDot-GCC_ARM.a 
 LINKER_SCRIPT ?= .././mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device/TOOLCHAIN_GCC_ARM/STM32L151XC.ld
 
 # Objects and Paths
 ###############################################################################
 # Tools and Flags
 
-AS      = 'arm-none-eabi-gcc' '-x' 'assembler-with-cpp' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-O0' '-g3' '-DMBED_DEBUG' '-DMBED_TRAP_ERRORS_ENABLED=1' '-mcpu=cortex-m3' '-mthumb'
-CC      = 'arm-none-eabi-gcc' '-std=gnu99' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-O0' '-g3' '-DMBED_DEBUG' '-DMBED_TRAP_ERRORS_ENABLED=1' '-mcpu=cortex-m3' '-mthumb'
-CPP     = 'arm-none-eabi-g++' '-std=gnu++98' '-fno-rtti' '-Wvla' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-O0' '-g3' '-DMBED_DEBUG' '-DMBED_TRAP_ERRORS_ENABLED=1' '-mcpu=cortex-m3' '-mthumb'
+AS      = 'arm-none-eabi-gcc' '-x' 'assembler-with-cpp' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-O0' '-g3' '-mcpu=cortex-m3' '-mthumb'
+CC      = 'arm-none-eabi-gcc' '-std=gnu99' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-O0' '-g3' '-mcpu=cortex-m3' '-mthumb'
+CPP     = 'arm-none-eabi-g++' '-std=gnu++98' '-fno-rtti' '-Wvla' '-c' '-Wall' '-Wextra' '-Wno-unused-parameter' '-Wno-missing-field-initializers' '-fmessage-length=0' '-fno-exceptions' '-fno-builtin' '-ffunction-sections' '-fdata-sections' '-funsigned-char' '-MMD' '-fno-delete-null-pointer-checks' '-fomit-frame-pointer' '-O0' '-g3' '-mcpu=cortex-m3' '-mthumb'
 LD      = 'arm-none-eabi-gcc'
 ELF2BIN = 'arm-none-eabi-objcopy'
-PREPROC = 'arm-none-eabi-cpp' '-E' '-P' '-Wl,--gc-sections' '-Wl,--wrap,main' '-Wl,--wrap,_malloc_r' '-Wl,--wrap,_free_r' '-Wl,--wrap,_realloc_r' '-Wl,--wrap,_memalign_r' '-Wl,--wrap,_calloc_r' '-Wl,--wrap,exit' '-Wl,--wrap,atexit' '-Wl,-n' '-mcpu=cortex-m3' '-mthumb'
+PREPROC = 'arm-none-eabi-cpp' '-E' '-P' '-Wl,--gc-sections' '-Wl,--wrap,main' '-Wl,--wrap,_malloc_r' '-Wl,--wrap,_free_r' '-Wl,--wrap,_realloc_r' '-Wl,--wrap,_calloc_r' '-Wl,--wrap,exit' '-Wl,--wrap,atexit' '-Wl,-n' '-mcpu=cortex-m3' '-mthumb'
 
 
 C_FLAGS += -std=gnu99
+C_FLAGS += -DMBED_BUILD_TIMESTAMP=1511887282.28
 C_FLAGS += -DTARGET_XDOT_L151CC
 C_FLAGS += -D__MBED__=1
 C_FLAGS += -DDEVICE_I2CSLAVE=1
 C_FLAGS += -DTARGET_LIKE_MBED
-C_FLAGS += -DDEVICE_PORTOUT=1
 C_FLAGS += -DDEVICE_PORTINOUT=1
 C_FLAGS += -D__MBED_CMSIS_RTOS_CM
 C_FLAGS += -DTARGET_STM32L151CC
 C_FLAGS += -DTOOLCHAIN_object
 C_FLAGS += -D__CMSIS_RTOS
-C_FLAGS += -DMBED_BUILD_TIMESTAMP=1511877469.32
 C_FLAGS += -DTOOLCHAIN_GCC
-C_FLAGS += -DDEVICE_I2C_ASYNCH=1
 C_FLAGS += -DTARGET_LIKE_CORTEX_M3
 C_FLAGS += -DTARGET_CORTEX_M
 C_FLAGS += -DTARGET_DEBUG
 C_FLAGS += -DARM_MATH_CM3
-C_FLAGS += -DDEVICE_RTC=1
 C_FLAGS += -DDEVICE_ANALOGOUT=1
 C_FLAGS += -DTARGET_STM32L1
 C_FLAGS += -DTARGET_UVISOR_UNSUPPORTED
 C_FLAGS += -DTARGET_M3
 C_FLAGS += -DDEVICE_SERIAL=1
-C_FLAGS += -DDEVICE_SPI_ASYNCH=1
 C_FLAGS += -DDEVICE_INTERRUPTIN=1
-C_FLAGS += -DTARGET_CORTEX
 C_FLAGS += -DDEVICE_I2C=1
-C_FLAGS += -DTRANSACTION_QUEUE_SIZE_SPI=2
+C_FLAGS += -DDEVICE_PORTOUT=1
 C_FLAGS += -D__CORTEX_M3
 C_FLAGS += -DDEVICE_STDIO_MESSAGES=1
-C_FLAGS += -DTARGET_FAMILY_STM32
-C_FLAGS += -DTARGET_FF_ARDUINO
+C_FLAGS += -DDEVICE_SPI_ASYNCH=1
 C_FLAGS += -DTARGET_STM
 C_FLAGS += -DDEVICE_PORTIN=1
 C_FLAGS += -DDEVICE_SLEEP=1
@@ -459,46 +425,39 @@ C_FLAGS += -DDEVICE_SPI=1
 C_FLAGS += -DDEVICE_SPISLAVE=1
 C_FLAGS += -DDEVICE_ANALOGIN=1
 C_FLAGS += -DDEVICE_PWMOUT=1
-C_FLAGS += -DDEVICE_FLASH=1
-C_FLAGS += -DTARGET_FF1705_L151CC
+C_FLAGS += -DDEVICE_RTC=1
 C_FLAGS += -include
 C_FLAGS += mbed_config.h
 
 CXX_FLAGS += -std=gnu++98
 CXX_FLAGS += -fno-rtti
 CXX_FLAGS += -Wvla
+CXX_FLAGS += -DMBED_BUILD_TIMESTAMP=1511887282.28
 CXX_FLAGS += -DTARGET_XDOT_L151CC
 CXX_FLAGS += -D__MBED__=1
 CXX_FLAGS += -DDEVICE_I2CSLAVE=1
 CXX_FLAGS += -DTARGET_LIKE_MBED
-CXX_FLAGS += -DDEVICE_PORTOUT=1
 CXX_FLAGS += -DDEVICE_PORTINOUT=1
 CXX_FLAGS += -D__MBED_CMSIS_RTOS_CM
 CXX_FLAGS += -DTARGET_STM32L151CC
 CXX_FLAGS += -DTOOLCHAIN_object
 CXX_FLAGS += -D__CMSIS_RTOS
-CXX_FLAGS += -DMBED_BUILD_TIMESTAMP=1511877469.32
 CXX_FLAGS += -DTOOLCHAIN_GCC
-CXX_FLAGS += -DDEVICE_I2C_ASYNCH=1
 CXX_FLAGS += -DTARGET_LIKE_CORTEX_M3
 CXX_FLAGS += -DTARGET_CORTEX_M
 CXX_FLAGS += -DTARGET_DEBUG
 CXX_FLAGS += -DARM_MATH_CM3
-CXX_FLAGS += -DDEVICE_RTC=1
 CXX_FLAGS += -DDEVICE_ANALOGOUT=1
 CXX_FLAGS += -DTARGET_STM32L1
 CXX_FLAGS += -DTARGET_UVISOR_UNSUPPORTED
 CXX_FLAGS += -DTARGET_M3
 CXX_FLAGS += -DDEVICE_SERIAL=1
-CXX_FLAGS += -DDEVICE_SPI_ASYNCH=1
 CXX_FLAGS += -DDEVICE_INTERRUPTIN=1
-CXX_FLAGS += -DTARGET_CORTEX
 CXX_FLAGS += -DDEVICE_I2C=1
-CXX_FLAGS += -DTRANSACTION_QUEUE_SIZE_SPI=2
+CXX_FLAGS += -DDEVICE_PORTOUT=1
 CXX_FLAGS += -D__CORTEX_M3
 CXX_FLAGS += -DDEVICE_STDIO_MESSAGES=1
-CXX_FLAGS += -DTARGET_FAMILY_STM32
-CXX_FLAGS += -DTARGET_FF_ARDUINO
+CXX_FLAGS += -DDEVICE_SPI_ASYNCH=1
 CXX_FLAGS += -DTARGET_STM
 CXX_FLAGS += -DDEVICE_PORTIN=1
 CXX_FLAGS += -DDEVICE_SLEEP=1
@@ -507,8 +466,7 @@ CXX_FLAGS += -DDEVICE_SPI=1
 CXX_FLAGS += -DDEVICE_SPISLAVE=1
 CXX_FLAGS += -DDEVICE_ANALOGIN=1
 CXX_FLAGS += -DDEVICE_PWMOUT=1
-CXX_FLAGS += -DDEVICE_FLASH=1
-CXX_FLAGS += -DTARGET_FF1705_L151CC
+CXX_FLAGS += -DDEVICE_RTC=1
 CXX_FLAGS += -include
 CXX_FLAGS += mbed_config.h
 
@@ -516,77 +474,12 @@ ASM_FLAGS += -x
 ASM_FLAGS += assembler-with-cpp
 ASM_FLAGS += -D__CMSIS_RTOS
 ASM_FLAGS += -D__MBED_CMSIS_RTOS_CM
-ASM_FLAGS += -DTRANSACTION_QUEUE_SIZE_SPI=2
 ASM_FLAGS += -D__CORTEX_M3
 ASM_FLAGS += -DARM_MATH_CM3
-ASM_FLAGS += -I.
-ASM_FLAGS += -I./mbed-os
-ASM_FLAGS += -I./mbed-os/drivers
-ASM_FLAGS += -I./mbed-os/targets
-ASM_FLAGS += -I./mbed-os/targets/TARGET_STM
-ASM_FLAGS += -I./mbed-os/targets/TARGET_STM/TARGET_STM32L1
-ASM_FLAGS += -I./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC
-ASM_FLAGS += -I./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device
-ASM_FLAGS += -I./mbed-os/targets/TARGET_STM/TARGET_STM32L1/TARGET_XDOT_L151CC/device/TOOLCHAIN_GCC_ARM
-ASM_FLAGS += -I./mbed-os/targets/TARGET_STM/TARGET_STM32L1/device
-ASM_FLAGS += -I./mbed-os/hal
-ASM_FLAGS += -I./mbed-os/hal/storage_abstraction
-ASM_FLAGS += -I./mbed-os/platform
-ASM_FLAGS += -I./mbed-os/features
-ASM_FLAGS += -I./mbed-os/features/netsocket
-ASM_FLAGS += -I./mbed-os/features/netsocket/cellular
-ASM_FLAGS += -I./mbed-os/features/netsocket/cellular/generic_modem_driver
-ASM_FLAGS += -I./mbed-os/features/netsocket/cellular/utils
-ASM_FLAGS += -I./mbed-os/features/mbedtls
-ASM_FLAGS += -I./mbed-os/features/mbedtls/inc
-ASM_FLAGS += -I./mbed-os/features/mbedtls/inc/mbedtls
-ASM_FLAGS += -I./mbed-os/features/mbedtls/importer
-ASM_FLAGS += -I./mbed-os/features/mbedtls/targets
-ASM_FLAGS += -I./mbed-os/features/mbedtls/targets/TARGET_STM
-ASM_FLAGS += -I./mbed-os/features/mbedtls/platform
-ASM_FLAGS += -I./mbed-os/features/mbedtls/platform/inc
-ASM_FLAGS += -I./mbed-os/features/mbedtls/platform/src
-ASM_FLAGS += -I./mbed-os/features/mbedtls/src
-ASM_FLAGS += -I./mbed-os/features/filesystem
-ASM_FLAGS += -I./mbed-os/features/filesystem/bd
-ASM_FLAGS += -I./mbed-os/features/filesystem/fat
-ASM_FLAGS += -I./mbed-os/features/filesystem/fat/ChaN
-ASM_FLAGS += -I./mbed-os/features/nanostack
-ASM_FLAGS += -I./mbed-os/features/storage
-ASM_FLAGS += -I./mbed-os/features/frameworks
-ASM_FLAGS += -I./mbed-os/features/frameworks/unity
-ASM_FLAGS += -I./mbed-os/features/frameworks/unity/unity
-ASM_FLAGS += -I./mbed-os/features/frameworks/unity/source
-ASM_FLAGS += -I./mbed-os/features/frameworks/greentea-client
-ASM_FLAGS += -I./mbed-os/features/frameworks/greentea-client/source
-ASM_FLAGS += -I./mbed-os/features/frameworks/greentea-client/greentea-client
-ASM_FLAGS += -I./mbed-os/features/frameworks/utest
-ASM_FLAGS += -I./mbed-os/features/frameworks/utest/source
-ASM_FLAGS += -I./mbed-os/features/frameworks/utest/utest
-ASM_FLAGS += -I./mbed-os/cmsis
-ASM_FLAGS += -I./mbed-os/cmsis/TARGET_CORTEX_M
-ASM_FLAGS += -I./mbed-os/cmsis/TARGET_CORTEX_M/TOOLCHAIN_GCC
-ASM_FLAGS += -I./mbed-os/cmsis/TOOLCHAIN_GCC
-ASM_FLAGS += -I./mbed-os/rtos
-ASM_FLAGS += -I./mbed-os/rtos/TARGET_CORTEX
-ASM_FLAGS += -I./mbed-os/rtos/TARGET_CORTEX/rtx5
-ASM_FLAGS += -I./mbed-os/rtos/TARGET_CORTEX/rtx5/TARGET_M3
-ASM_FLAGS += -I./mbed-os/rtos/TARGET_CORTEX/rtx5/TARGET_M3/TOOLCHAIN_GCC
-ASM_FLAGS += -I./mbed-os/rtos/TARGET_CORTEX/rtx4
-ASM_FLAGS += -I./mbed-os/events
-ASM_FLAGS += -I./mbed-os/events/equeue
-ASM_FLAGS += -I./libxDot-mbed5
-ASM_FLAGS += -I./libxDot-mbed5/plans
-ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora
-ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora/vendor
-ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora/vendor/multitech
-ASM_FLAGS += -I./libxDot-mbed5/MTS-Lora/vendor/multitech/MTS-Utils
-ASM_FLAGS += -I./HC_SR04_Ultrasonic_Library
-ASM_FLAGS += -I./src
 
 
-LD_FLAGS :=-Wl,--gc-sections -Wl,--wrap,main -Wl,--wrap,_malloc_r -Wl,--wrap,_free_r -Wl,--wrap,_realloc_r -Wl,--wrap,_memalign_r -Wl,--wrap,_calloc_r -Wl,--wrap,exit -Wl,--wrap,atexit -Wl,-n -mcpu=cortex-m3 -mthumb 
-LD_SYS_LIBS :=-Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -lxDot-GCC_ARM -Wl,--end-group
+LD_FLAGS :=-Wl,--gc-sections -Wl,--wrap,main -Wl,--wrap,_malloc_r -Wl,--wrap,_free_r -Wl,--wrap,_realloc_r -Wl,--wrap,_calloc_r -Wl,--wrap,exit -Wl,--wrap,atexit -Wl,-n -mcpu=cortex-m3 -mthumb 
+LD_SYS_LIBS :=-Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -Wl,--end-group
 
 # Tools and Flags
 ###############################################################################
@@ -598,20 +491,20 @@ LD_SYS_LIBS :=-Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -lxDot-G
 all: $(PROJECT).bin $(PROJECT).hex size
 
 
+.asm.o:
+	+@$(call MAKEDIR,$(dir $@))
+	+@echo "Assemble: $(notdir $<)"
+	@$(AS) -c $(ASM_FLAGS) $(INCLUDE_PATHS) -o $@ $<
+
 .s.o:
 	+@$(call MAKEDIR,$(dir $@))
 	+@echo "Assemble: $(notdir $<)"
-  
-	@$(AS) -c $(ASM_FLAGS) -o $@ $<
-  
-
+	@$(AS) -c $(ASM_FLAGS) $(INCLUDE_PATHS) -o $@ $<
 
 .S.o:
 	+@$(call MAKEDIR,$(dir $@))
 	+@echo "Assemble: $(notdir $<)"
-  
-	@$(AS) -c $(ASM_FLAGS) -o $@ $<
-  
+	@$(AS) -c $(ASM_FLAGS) $(INCLUDE_PATHS) -o $@ $<
 
 .c.o:
 	+@$(call MAKEDIR,$(dir $@))
@@ -631,7 +524,7 @@ $(PROJECT).link_script.ld: $(LINKER_SCRIPT)
 
 $(PROJECT).elf: $(OBJECTS) $(SYS_OBJECTS) $(PROJECT).link_script.ld 
 	+@echo "link: $(notdir $@)"
-	@$(LD) $(LD_FLAGS) -T $(filter-out %.o, $^) $(LIBRARY_PATHS) --output $@ $(filter %.o, $^) $(LIBRARIES) $(LD_SYS_LIBS)
+	@$(LD) $(LD_FLAGS) -T $(filter %.ld, $^) $(LIBRARY_PATHS) --output $@ $(filter %.o, $^) $(LIBRARIES) $(LD_SYS_LIBS)
 
 
 $(PROJECT).bin: $(PROJECT).elf
