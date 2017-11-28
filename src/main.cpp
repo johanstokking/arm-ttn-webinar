@@ -1,13 +1,41 @@
 #include "mbed.h"
+#include "ultrasonic.h"
 
-DigitalOut led1(LED1);
+Serial pc(USBTX, USBRX);
 
-// main() runs in its own thread in the OS
+// Store last measured distance and whether a change is pending
+int lastDistance = 0;
+bool changePending = false;
+
+void dist(int distance)
+{
+    // Only if the difference is more than 10mm, trigger a pending change
+    if (abs(distance - lastDistance) > 10) {
+        printf("Distance changed to %dmm\r\n", distance);
+        lastDistance = distance;
+        changePending = true;
+    }
+}
+
+ultrasonic mu(PB_0, PB_2, .1, 1, &dist);
+
 int main()
 {
+    pc.baud(115200);
+    mu.startUpdates();
+
     while (true)
     {
-        led1 = !led1;
-        wait(0.5);
+        mu.checkDistance();
+
+        if (changePending)
+        {
+            // The distance changed, send a message
+            printf("Sending data %dmm\r\n", lastDistance);
+            changePending = false;
+
+            // Wait 10 seconds after sending a message to reduce channel utilization
+            wait(10);
+        }
     }
 }
