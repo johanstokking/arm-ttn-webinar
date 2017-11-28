@@ -12,7 +12,7 @@ lora::ChannelPlan *plan = NULL;
 int lastDistance = 0;
 bool changePending = false;
 
-void dist(int distance)
+void distanceChanged(int distance)
 {
     // Only if the difference is more than 10mm, trigger a pending change
     if (abs(distance - lastDistance) > 10)
@@ -23,7 +23,7 @@ void dist(int distance)
     }
 }
 
-ultrasonic mu(PB_0, PB_2, .1, 1, &dist);
+ultrasonic mu(PB_0, PB_2, .1, 1, &distanceChanged);
 
 int main()
 {
