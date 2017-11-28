@@ -36,4 +36,5 @@
 *.hex
 *.pyc
 
+.DS_Store
 build/
