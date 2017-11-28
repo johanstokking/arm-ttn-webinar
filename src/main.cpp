@@ -77,6 +77,7 @@ int main()
         mu.checkDistance();
         if (changePending)
         {
+            changePending = false;
             printf("Sending data...\r\n");
 
             // Encode the distance
@@ -91,9 +92,8 @@ int main()
                 printf("Sent data\r\n");
             }
 
-            // Wait 10 seconds after sending a message to reduce channel utilization
-            wait(10);
-            changePending = false;
+            // Wait until we can send more data
+            wait(dot->getNextTxMs() / 1000 + 1);
         }
     }
 }
