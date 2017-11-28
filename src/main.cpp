@@ -2,11 +2,13 @@
 #include "mDot.h"
 #include "ChannelPlans.h"
 #include "ultrasonic.h"
+#include "CayenneLPP.h"
 #include "ttn_config.h"
 
 Serial pc(USBTX, USBRX);
 mDot *dot = NULL;
 lora::ChannelPlan *plan = NULL;
+CayenneLPP payload(50);
 
 // Store last measured distance and whether a change is pending
 int lastDistance = 0;
@@ -14,8 +16,8 @@ bool changePending = false;
 
 void distanceChanged(int distance)
 {
-    // Only if the difference is more than 10mm, trigger a pending change
-    if (abs(distance - lastDistance) > 10)
+    // Only if the difference is more than 20mm, trigger a pending change
+    if (abs(distance - lastDistance) > 20)
     {
         printf("Distance changed to %dmm\r\n", distance);
         lastDistance = distance;
@@ -23,6 +25,7 @@ void distanceChanged(int distance)
     }
 }
 
+// Measure every 1/10th second
 ultrasonic mu(PB_0, PB_2, .1, 1, &distanceChanged);
 
 int main()
@@ -74,12 +77,21 @@ int main()
         mu.checkDistance();
         if (changePending)
         {
-            // The distance changed, send a message
-            printf("Sending data %dmm\r\n", lastDistance);
-            changePending = false;
+            printf("Sending data...\r\n");
+
+            // Encode the distance
+            payload.reset();
+            payload.addAnalogInput(1, lastDistance);
+
+            // Send the data to the network
+            std::vector<uint8_t> data(payload.getBuffer(), payload.getBuffer() + payload.getSize());
+            if ((ret = dot->send(data)) != mDot::MDOT_OK) {
+                printf("Failed to send data: %ld\r\n", ret);
+            }
 
             // Wait 10 seconds after sending a message to reduce channel utilization
             wait(10);
+            changePending = false;
         }
     }
 }

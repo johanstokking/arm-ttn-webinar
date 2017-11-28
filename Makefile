@@ -46,6 +46,7 @@ PROJECT := arm-ttn-webinar
 ###############################################################################
 # Objects and Paths
 
+OBJECTS += ./Cayenne-LPP/src/CayenneLPP.o
 OBJECTS += ./HC_SR04_Ultrasonic_Library/ultrasonic.o
 OBJECTS += ./mbed-os/drivers/AnalogIn.o
 OBJECTS += ./mbed-os/drivers/BusIn.o
@@ -316,6 +317,8 @@ OBJECTS += ./src/main.o
 
 INCLUDE_PATHS += -I../
 INCLUDE_PATHS += -I../.
+INCLUDE_PATHS += -I.././Cayenne-LPP
+INCLUDE_PATHS += -I.././Cayenne-LPP/src
 INCLUDE_PATHS += -I.././HC_SR04_Ultrasonic_Library
 INCLUDE_PATHS += -I.././libxDot-mbed5
 INCLUDE_PATHS += -I.././libxDot-mbed5/MTS-Lora
@@ -391,7 +394,6 @@ PREPROC = 'arm-none-eabi-cpp' '-E' '-P' '-Wl,--gc-sections' '-Wl,--wrap,main' '-
 
 
 C_FLAGS += -std=gnu99
-C_FLAGS += -DMBED_BUILD_TIMESTAMP=1511887282.28
 C_FLAGS += -DTARGET_XDOT_L151CC
 C_FLAGS += -D__MBED__=1
 C_FLAGS += -DDEVICE_I2CSLAVE=1
@@ -409,6 +411,7 @@ C_FLAGS += -DARM_MATH_CM3
 C_FLAGS += -DDEVICE_ANALOGOUT=1
 C_FLAGS += -DTARGET_STM32L1
 C_FLAGS += -DTARGET_UVISOR_UNSUPPORTED
+C_FLAGS += -DMBED_BUILD_TIMESTAMP=1511888054.74
 C_FLAGS += -DTARGET_M3
 C_FLAGS += -DDEVICE_SERIAL=1
 C_FLAGS += -DDEVICE_INTERRUPTIN=1
@@ -432,7 +435,6 @@ C_FLAGS += mbed_config.h
 CXX_FLAGS += -std=gnu++98
 CXX_FLAGS += -fno-rtti
 CXX_FLAGS += -Wvla
-CXX_FLAGS += -DMBED_BUILD_TIMESTAMP=1511887282.28
 CXX_FLAGS += -DTARGET_XDOT_L151CC
 CXX_FLAGS += -D__MBED__=1
 CXX_FLAGS += -DDEVICE_I2CSLAVE=1
@@ -450,6 +452,7 @@ CXX_FLAGS += -DARM_MATH_CM3
 CXX_FLAGS += -DDEVICE_ANALOGOUT=1
 CXX_FLAGS += -DTARGET_STM32L1
 CXX_FLAGS += -DTARGET_UVISOR_UNSUPPORTED
+CXX_FLAGS += -DMBED_BUILD_TIMESTAMP=1511888054.74
 CXX_FLAGS += -DTARGET_M3
 CXX_FLAGS += -DDEVICE_SERIAL=1
 CXX_FLAGS += -DDEVICE_INTERRUPTIN=1
